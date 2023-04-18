@@ -1,5 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
@@ -7,6 +8,7 @@ import java.awt.BorderLayout;
 public class Test {
     private JFrame ventana;
     private JButton botón;
+    private JPanel panel;
 
     public static void main(String[] args) {
         new Test();
@@ -24,11 +26,16 @@ public class Test {
         botón.addActionListener(this::eventos);
         ventana.add(botón, BorderLayout.SOUTH);
 
+        panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setSize(500, 500);
+        ventana.add(panel, BorderLayout.CENTER);
+
         ventana.setVisible(true);
     }
     public void eventos(ActionEvent e) {
-        Persona persona = new Persona();
-        ventana.add(persona, BorderLayout.CENTER);
+        Persona persona = new Persona(300, 500);
+        panel.add(persona, BorderLayout.CENTER);
         ventana.pack();
     }
 }
